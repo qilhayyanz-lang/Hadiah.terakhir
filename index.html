@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Ara</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:white;
+    background: url('bg.jpg') no-repeat center center/cover;
+    position:relative;
+}
+
+/* overlay gelap aesthetic */
+body::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    z-index:0;
+}
+
+.container{
+    position:relative;
+    z-index:1;
+    background:rgba(255,255,255,0.08);
+    padding:35px;
+    border-radius:25px;
+    width:90%;
+    max-width:420px;
+    text-align:center;
+    backdrop-filter: blur(15px);
+    box-shadow:0 0 40px rgba(0,0,0,0.4);
+    animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+p{
+    min-height:120px;
+    font-size:14px;
+    line-height:1.6;
+    opacity:0.9;
+}
+
+input{
+    padding:10px;
+    border-radius:20px;
+    border:none;
+    outline:none;
+    width:80%;
+    text-align:center;
+    margin-top:10px;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 22px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:500;
+    background:linear-gradient(to right,#ff7e5f,#feb47b);
+    color:white;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.secondary{
+    background:white;
+    color:#333;
+    margin:5px;
+}
+
+.hidden{
+    display:none;
+}
+
+/* partikel cahaya */
+.particle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.6;
+    animation:float 10s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="step1">
+    <h1>Masukkan nama yang sering Hayyan panggil ke kamu</h1>
+    <input type="text" id="nameInput" placeholder="Masukkan nama...">
+    <br>
+    <button onclick="checkName()">Masuk</button>
+    <p id="error" style="color:#ffd6d6;"></p>
+</div>
+
+<div class="container hidden" id="step2">
+    <h1>Untuk Ara</h1>
+    <p id="confessionText"></p>
+    <button onclick="nextStep()">Selanjutnya</button>
+</div>
+
+<div class="container hidden" id="step3">
+    <h1>Apa kamu mau balikan?</h1>
+    <button class="secondary" onclick="accept()">Mau</button>
+    <button class="secondary" onclick="reject()">Engga</button>
+</div>
+
+<div class="container hidden" id="result"></div>
+
+<audio id="song" loop preload="auto">
+    <source src="reff.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+// animasi partikel
+setInterval(()=>{
+    let particle = document.createElement("div");
+    particle.classList.add("particle");
+    particle.style.left = Math.random()*100+"vw";
+    document.body.appendChild(particle);
+    setTimeout(()=>{particle.remove();},10000);
+},400);
+
+function checkName(){
+    let name = document.getElementById("nameInput").value.trim().toLowerCase();
+
+    if(name === "ara"){
+        document.getElementById("step1").classList.add("hidden");
+        document.getElementById("step2").classList.remove("hidden");
+
+        // 🔥 PLAY MUSIK DI SINI
+        let song = document.getElementById("song");
+        song.currentTime = 0;
+        song.play().catch(() => {
+            console.log("Autoplay diblokir");
+        });
+
+        typeWriter();
+    }else{
+        document.getElementById("error").innerHTML = "Maaf, akses hanya untuk orang yang tepat.";
+    }
+}
+
+let text = `Aku tidak datang untuk memaksa keadaan kembali seperti dulu.
+
+Aku hanya ingin jujur bahwa perasaan itu belum benar-benar pergi.
+
+Waktu mungkin berjalan,
+dan keadaan mungkin berubah,
+tapi ada bagian kecil dalam diriku
+yang masih menyimpan semuanya dengan rapi.
+
+Bukan untuk mengulang kesalahan,
+bukan untuk memaksa cerita,
+tapi untuk memperbaiki apa yang dulu belum sempat diperbaiki.
+
+Aku belajar diam.
+Belajar menahan diri.
+Belajar memahami dari jauh tanpa harus selalu terlihat.
+
+Tidak semua perjuangan harus diumumkan.
+Tidak semua rasa harus dipamerkan.
+Kadang cukup disimpan,
+dan diperjuangkan dengan cara yang lebih dewasa.
+
+Aku masih memperhatikan.
+Masih peduli.
+Masih mendoakan dalam diam.
+
+Bukan karena tidak bisa melangkah,
+tapi karena aku tahu apa yang pernah kita punya
+bukan sesuatu yang mudah tergantikan.
+
+Jika hari ini aku masih berdiri di sini,
+itu bukan karena terjebak masa lalu,
+melainkan karena aku masih percaya
+bahwa sesuatu yang baik
+layak untuk diperjuangkan dengan sabar.
+
+Dan jika suatu hari kamu menoleh,
+aku ingin kamu tahu,
+aku tidak pernah benar-benar pergi.`;
+
+let i = 0;
+function typeWriter(){
+    if(i < text.length){
+        document.getElementById("confessionText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 35);
+    }
+}
+
+function nextStep(){
+    document.getElementById("step2").classList.add("hidden");
+    document.getElementById("step3").classList.remove("hidden");
+
+    let song =
+
+    song.src = "reff.mp3";   // set ulang source
+    song.load();             // paksa load ulang
+    song.currentTime = 0;
+
+    let playPromise = song.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(_ => {
+            console.log("Lagu berhasil diputar");
+        }).catch(error => {
+            console.log("Autoplay diblokir, klik layar dulu");
+        });
+    }
+}
+
+function accept(){
+
+    document.getElementById("step3").classList.add("hidden");
+    let result = document.getElementById("result");
+    result.classList.remove("hidden");
+
+    result.innerHTML = `
+    <h1>Terima Kasih</h1>
+    <p>
+    Terima kasih karena sudah memilih untuk kembali.
+
+    Aku tidak melihat ini sebagai pengulangan,
+    tapi sebagai kesempatan kedua
+    untuk melakukan semuanya dengan cara yang lebih dewasa.
+
+    Aku tidak menjanjikan hubungan tanpa masalah,
+    tapi aku berjanji akan hadir dengan cara yang lebih tenang,
+    lebih sabar,
+    dan lebih menghargai setiap hal kecil yang dulu mungkin terlewat.
+
+    Aku belajar banyak dari jarak.
+    Belajar bahwa kebersamaan bukan hanya soal dekat,
+    tapi tentang bagaimana menjaga.
+
+    Jika kita berjalan lagi dari awal,
+    aku ingin berjalan tanpa ego yang sama,
+    tanpa kesalahan yang sama,
+    dan tanpa luka yang sama.
+
+    Terima kasih karena masih percaya.
+    Kali ini, aku tidak ingin hanya memiliki,
+    tapi juga menjaga dengan sungguh-sungguh.
+    </p>
+    `;
+}
+
+function reject(){
+
+    document.getElementById("step3").classList.add("hidden");
+    let result = document.getElementById("result");
+    result.classList.remove("hidden");
+
+    result.innerHTML = `
+    <h1>Aku Mengerti</h1>
+    <p>
+    Aku mengerti keputusanmu.
+
+    Tidak semua perasaan harus kembali menjadi cerita yang sama.
+    Kadang yang terbaik adalah menerima
+    bahwa tidak semua hal indah ditakdirkan untuk diulang.
+
+    Maaf jika selama ini kehadiranku terasa mengganggu,
+    atau jika diamku pernah membuatmu tidak nyaman.
+
+    Aku tidak menyesal pernah memperjuangkan,
+    karena bagiku, apa yang kita punya dulu
+    adalah sesuatu yang tulus.
+
+    Terima kasih sudah pernah menjadi bagian
+    dari fase hidup yang berarti.
+
+    Aku akan melangkah dengan tenang,
+    tanpa menyimpan dendam,
+    tanpa menyimpan kecewa.
+
+    Semoga kamu bahagia,
+    dengan atau tanpa aku di dalam ceritamu.
+    </p>
+    `;
+}
+
+</script>
+
+</body>
+</html>
