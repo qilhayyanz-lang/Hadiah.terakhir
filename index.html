@@ -3,326 +3,440 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Ara</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+<title>Untuk Mutiara, Terakhir Kali 🤍</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0e0c0f;--bg2:#141118;--line:#2a2430;--muted:#5a5060;
+  --soft:#8a7e92;--blush:#c9a0a0;--rose:#b07070;--gold:#b89a6a;
+  --cream:#e8e0d8;--white:#f5f0ee;
 }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'Lato',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:998;opacity:.6}
 
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    color:white;
-    background: url('bg.jpg') no-repeat center center/cover;
-    position:relative;
-}
+.cursor{position:fixed;width:6px;height:6px;background:var(--blush);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;width:24px;height:24px;border:1px solid rgba(201,160,160,.3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease}
 
-/* overlay gelap aesthetic */
-body::after{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.55);
-    backdrop-filter: blur(6px);
-    z-index:0;
-}
+.particles{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.drop{position:absolute;top:-10px;width:1px;background:linear-gradient(to bottom,transparent,var(--blush),transparent);opacity:0;animation:drip linear infinite}
+@keyframes drip{0%{top:-10px;opacity:0}10%{opacity:.35}90%{opacity:.1}100%{top:110vh;opacity:0}}
 
-.container{
-    position:relative;
-    z-index:1;
-    background:rgba(255,255,255,0.08);
-    padding:35px;
-    border-radius:25px;
-    width:90%;
-    max-width:420px;
-    text-align:center;
-    backdrop-filter: blur(15px);
-    box-shadow:0 0 40px rgba(0,0,0,0.4);
-    animation:fadeIn 1.2s ease;
-}
+section{position:relative;z-index:10}
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
-}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(176,112,112,.07) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-size:11px;letter-spacing:.5em;text-transform:uppercase;color:var(--muted);margin-bottom:40px;opacity:0;animation:up 1s ease .4s forwards}
+.hero-title{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(16px,2vw,20px);color:var(--soft);margin-bottom:12px;opacity:0;animation:up 1s ease .6s forwards}
+.hero-name{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(56px,11vw,130px);line-height:.88;color:var(--white);letter-spacing:-.02em;opacity:0;animation:up 1.2s ease .8s forwards}
+.hero-name em{display:block;font-style:italic;color:var(--blush);font-weight:400}
+.hero-dash{width:40px;height:1px;background:var(--rose);margin:36px auto;opacity:0;animation:fi 1s ease 1.1s forwards}
+.hero-sub{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fi 1s ease 1.3s forwards}
+.hero-scroll{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);opacity:0;margin-top:60px;animation:fi 1s ease 1.6s forwards,bob 2.5s ease 2s infinite}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
 
-h1{
-    font-weight:600;
-    margin-bottom:15px;
-}
+/* LETTER */
+.letter-section{padding:120px 24px;max-width:680px;margin:0 auto}
+.letter-label{font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(--muted);margin-bottom:60px;text-align:center}
+.letter-wrap{border-left:1px solid var(--line);padding-left:40px;position:relative}
+.letter-wrap::before{content:'';position:absolute;left:-1px;top:0;width:1px;height:0;background:var(--rose);animation:lineGrow 2s ease 1s forwards}
+@keyframes lineGrow{to{height:100%}}
+.letter-open{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,2.5vw,26px);color:var(--blush);margin-bottom:40px}
+.letter-p{font-size:clamp(15px,1.7vw,17px);line-height:2.3;color:rgba(232,224,216,.7);margin-bottom:28px}
+.letter-p strong{color:var(--cream);font-weight:400}
+.letter-close{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--soft);margin-top:48px;text-align:right}
 
-p{
-    min-height:120px;
-    font-size:14px;
-    line-height:1.6;
-    opacity:0.9;
-}
+/* MOMENTS */
+.moments-section{padding:80px 24px 120px;text-align:center}
+.moments-label{font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(--muted);margin-bottom:72px}
+.moments-list{max-width:560px;margin:0 auto;display:flex;flex-direction:column}
+.moment{display:flex;align-items:flex-start;gap:28px;padding:32px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease;text-align:left}
+.moment.on{opacity:1;transform:translateY(0)}
+.moment-num{font-family:'Playfair Display',serif;font-size:36px;color:var(--line);line-height:1;flex-shrink:0;margin-top:4px}
+.moment-text{font-size:14px;line-height:2;color:var(--muted)}
+.moment-text em{color:var(--soft);font-style:normal}
 
-input{
-    padding:10px;
-    border-radius:20px;
-    border:none;
-    outline:none;
-    width:80%;
-    text-align:center;
-    margin-top:10px;
-}
+/* CLOSING */
+.closing-section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.closing-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(176,112,112,.06),transparent 65%);pointer-events:none}
+.closing-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(13px,1.8vw,17px);color:var(--muted);max-width:460px;line-height:2;margin-bottom:64px;position:relative;z-index:1;padding-left:28px}
+.closing-quote::before{content:'"';font-size:80px;color:var(--line);position:absolute;top:-24px;left:-8px;font-family:'Playfair Display',serif;line-height:1}
+.closing-big{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(42px,8vw,100px);line-height:.92;color:var(--white);position:relative;z-index:1}
+.closing-big em{display:block;font-style:italic;color:var(--blush)}
+.closing-name{font-size:11px;letter-spacing:.5em;text-transform:uppercase;color:var(--muted);margin-top:28px;position:relative;z-index:1}
+.heart{font-size:24px;margin-top:52px;opacity:.6;animation:pulse 3s ease infinite;position:relative;z-index:1}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.15);opacity:.8}}
 
-button{
-    margin-top:15px;
-    padding:10px 22px;
-    border:none;
-    border-radius:25px;
-    cursor:pointer;
-    font-weight:500;
-    background:linear-gradient(to right,#ff7e5f,#feb47b);
-    color:white;
-    transition:0.3s;
-}
+.farewell-btn{margin-top:56px;background:transparent;border:1px solid rgba(176,112,112,.3);padding:18px 44px;cursor:none;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:2;transition:border-color .4s,background .4s}
+.farewell-btn:hover{border-color:var(--rose);background:rgba(176,112,112,.06)}
+.farewell-btn-t{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(15px,2vw,19px);color:rgba(232,224,216,.6);letter-spacing:.04em}
+.farewell-btn-s{font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--muted)}
 
-button:hover{
-    transform:scale(1.05);
-}
+.sparkle{position:fixed;pointer-events:none;font-size:8px;color:var(--blush);opacity:0;animation:sp 2.5s ease forwards}
+@keyframes sp{0%{opacity:0;transform:scale(0) rotate(0deg)}40%{opacity:.7;transform:scale(1) rotate(180deg)}100%{opacity:0;transform:scale(0) rotate(360deg)}}
 
-.secondary{
-    background:white;
-    color:#333;
-    margin:5px;
-}
+/* FIREWORKS PAGE */
+/* MUSIC BAR (fixed bottom) */
+#music-ctrl{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;cursor:none;z-index:500;background:rgba(14,12,15,.85);border:1px solid rgba(201,160,160,.15);padding:10px 22px;border-radius:40px;transition:background .3s;white-space:nowrap;backdrop-filter:blur(8px)}
+#music-ctrl:hover{background:rgba(30,24,32,.9)}
+#music-icon{font-size:14px;color:var(--blush);animation:beatIcon 1.2s ease infinite}
+@keyframes beatIcon{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+#music-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,224,216,.35)}
 
-.hidden{
-    display:none;
-}
+/* BOOK PAGE */
+#book-page{position:fixed;inset:0;background:#0a0608;z-index:8000;display:none;opacity:0;transition:opacity .9s ease;overflow:hidden}
+#book-page.show{display:flex;align-items:center;justify-content:center}
+#book-page.vis{opacity:1}
+#book-back{position:absolute;top:24px;left:28px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.2);cursor:none;z-index:10;padding:8px;transition:color .3s}
+#book-back:hover{color:rgba(255,255,255,.6)}
+.book-hint{position:absolute;bottom:72px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,160,160,.3);white-space:nowrap;transition:opacity .5s;pointer-events:none}
 
-/* partikel cahaya */
-.particle{
-    position:absolute;
-    width:4px;
-    height:4px;
-    background:white;
-    border-radius:50%;
-    opacity:0.6;
-    animation:float 10s linear infinite;
-}
+/* BOOK SCENE */
+#book-scene{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
 
-@keyframes float{
-    0%{transform:translateY(100vh);}
-    100%{transform:translateY(-10vh);}
-}
+/* CLOSED BOOK */
+#book-closed{perspective:1200px;display:flex;align-items:center;justify-content:center}
+.book-cover-wrap{position:relative;width:220px;height:300px;transform-style:preserve-3d;transform:rotateY(-25deg) rotateX(5deg);transition:transform .6s ease;filter:drop-shadow(-20px 20px 40px rgba(0,0,0,.7))}
+.book-cover-wrap:hover{transform:rotateY(-18deg) rotateX(3deg) scale(1.03)}
+.book-cover-front{position:absolute;inset:0;background:linear-gradient(135deg,#2a1a1a,#1a1015);border-radius:2px 6px 6px 2px;display:flex;align-items:center;justify-content:center;backface-visibility:hidden}
+.book-cover-spine{position:absolute;left:0;top:0;bottom:0;width:18px;background:linear-gradient(to right,#3d1f1f,#2a1515);border-radius:2px 0 0 2px}
+.book-cover-content{text-align:center;padding:24px 28px 24px 46px}
+.book-cover-sub{font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(201,160,160,.4);margin-bottom:10px}
+.book-cover-name{font-family:'Playfair Display',serif;font-size:32px;color:var(--blush);line-height:1;margin-bottom:4px}
+.book-cover-sub2{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:rgba(201,160,160,.5);margin-bottom:20px}
+.book-cover-line{width:40px;height:1px;background:rgba(176,112,112,.3);margin:0 auto 20px}
+.book-cover-note{font-size:9px;letter-spacing:.15em;color:rgba(201,160,160,.25);line-height:1.6}
+.book-cover-back{position:absolute;inset:0;background:#1a1015;border-radius:2px 6px 6px 2px;transform:translateZ(-12px)}
+.book-cover-side{position:absolute;right:-6px;top:2px;bottom:2px;width:12px;background:linear-gradient(to right,#1a1015,#0d0810);transform:rotateY(90deg) translateZ(0);transform-origin:left}
+.book-pages-side{position:absolute;left:18px;top:2px;bottom:2px;width:12px;background:linear-gradient(to right,#e8e0d0,#d8d0c0,#e0d8c8);transform:rotateY(-90deg) translateZ(0);transform-origin:right}
+
+/* OPEN BOOK */
+.spread{display:flex;align-items:center;justify-content:center;gap:0;filter:drop-shadow(0 20px 60px rgba(0,0,0,.8));animation:spreadIn .6s ease forwards}
+@keyframes spreadIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.page{width:min(38vw,300px);height:min(55vw,420px);background:#f0ebe3;position:relative;overflow:hidden}
+.page-left{border-radius:4px 0 0 4px;box-shadow:inset -4px 0 8px rgba(0,0,0,.15),-8px 4px 20px rgba(0,0,0,.4)}
+.page-right{border-radius:0 4px 4px 0;box-shadow:inset 4px 0 8px rgba(0,0,0,.1),8px 4px 20px rgba(0,0,0,.3);transform-origin:left center;transition:transform .8s cubic-bezier(.645,.045,.355,1.000)}
+.page-right.flipping{transform:rotateY(-180deg)}
+.book-spine-open{width:12px;height:min(55vw,420px);background:linear-gradient(to right,#2a1a1a,#1a1015,#2a1a1a);box-shadow:0 0 12px rgba(0,0,0,.5)}
+.page-inner{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;background:linear-gradient(135deg,#faf6f0,#f0ebe3)}
+.page-photo{width:100%;height:85%;object-fit:cover;border-radius:2px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.page-caption{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:#a09080;margin-top:8px}
+/* text pages */
+.page-text-inner{background:linear-gradient(135deg,#faf6f0,#f0ebe3);gap:12px}
+.page-text-big{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,44px);color:#2a1a1a;line-height:1}
+.page-text-big.italic{font-style:italic;color:var(--rose)}
+.page-text-small{font-size:12px;color:#9a8878;text-align:center;line-height:1.9;letter-spacing:.05em;margin-top:8px}
+.page-text-thanks{font-size:40px;margin-bottom:16px}
+.page-text-name{font-family:'Playfair Display',serif;font-size:clamp(18px,3vw,26px);color:#2a1a1a;text-align:center;line-height:1.3}
+.page-text-name em{display:block;font-style:italic;color:var(--rose);font-size:.75em}
+.page-text-final{font-size:11px;color:#9a8878;letter-spacing:.15em;text-align:center;margin-top:16px;line-height:1.8}
+
+/* NEXT BUTTON */
+#book-next-btn{position:absolute;right:32px;top:50%;transform:translateY(-50%);background:rgba(201,160,160,.12);border:1px solid rgba(201,160,160,.25);width:48px;height:48px;border-radius:50%;cursor:none;color:var(--blush);font-size:24px;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s;z-index:10}
+#book-next-btn:hover{background:rgba(201,160,160,.25);transform:translateY(-50%) scale(1.08)}
+
+@media(max-width:600px){.letter-wrap{padding-left:20px}.closing-quote::before{display:none}.page{width:44vw;height:64vw}}
 </style>
 </head>
-
 <body>
 
-<div class="container" id="step1">
-    <h1>Masukkan nama yang sering Hayyan panggil ke kamu</h1>
-    <input type="text" id="nameInput" placeholder="Masukkan nama...">
-    <br>
-    <button onclick="checkName()">Masuk</button>
-    <p id="error" style="color:#ffd6d6;"></p>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="cur-ring"></div>
+<div class="particles" id="particles"></div>
+
+<section class="hero">
+  <p class="hero-eyebrow">sebuah pesan terakhir</p>
+  <p class="hero-title">untuk seseorang yang selalu ada di hati,</p>
+  <h1 class="hero-name">Mutiara<em>Nava Artika</em></h1>
+  <div class="hero-dash"></div>
+  <p class="hero-sub">dengan segala yang pernah kita miliki</p>
+  <p class="hero-scroll">↓ &nbsp; baca sampai habis</p>
+</section>
+
+<section class="letter-section">
+  <p class="letter-label">✦ &nbsp; surat terakhir &nbsp; ✦</p>
+  <div class="letter-wrap">
+    <p class="letter-open">Mutiara,</p>
+    <p class="letter-p">Aku tidak tahu bagaimana memulainya. Mungkin memang tidak ada cara yang tepat untuk mengucapkan selamat tinggal kepada seseorang yang pernah menjadi bagian terpenting dari hidupmu.</p>
+    <p class="letter-p">Ini bukan kemarahan. Bukan juga kepura-puraan. Ini hanya <strong>seseorang yang mencintaimu</strong>, yang belajar merelakan — perlahan, dengan tangan gemetar dan hati yang masih belajar ikhlas.</p>
+    <p class="letter-p">Maaf kalau aku pernah kurang. Maaf kalau ada momen di mana kamu merasa tidak cukup dihargai. Kamu layak mendapatkan yang terbaik — dan jika itu bukan aku, maka aku harus belajar untuk melepaskan dengan lapang.</p>
+    <p class="letter-p">Semoga kamu baik-baik saja. Semoga jalanmu ke depan penuh cahaya. Dan semoga suatu hari nanti, kamu bisa tersenyum mengingat semua ini — <strong>bukan dengan luka, tapi dengan syukur.</strong></p>
+    <p class="letter-close">— untuk terakhir kalinya, dengan tulus 🤍</p>
+  </div>
+</section>
+
+<section class="moments-section">
+  <p class="moments-label">✦ &nbsp; hal-hal yang akan selalu kuingat &nbsp; ✦</p>
+  <div class="moments-list">
+    <div class="moment"><div class="moment-num">01</div><p class="moment-text">Cara kamu <em>tertawa</em> — tulus, tanpa dibuat-buat, dan selalu bisa membuatku lupa pada semua yang berat</p></div>
+    <div class="moment"><div class="moment-num">02</div><p class="moment-text">Betapa kuatnya kamu, bahkan di hari-hari ketika kamu pikir <em>kamu tidak kuat</em></p></div>
+    <div class="moment"><div class="moment-num">03</div><p class="moment-text">Semua percakapan tengah malam yang terasa seperti <em>dunia hanya milik kita berdua</em></p></div>
+    <div class="moment"><div class="moment-num">04</div><p class="moment-text">Kebaikan kecil yang kamu berikan tanpa sadar — yang justru <em>paling membekas</em></p></div>
+    <div class="moment"><div class="moment-num">05</div><p class="moment-text">Caramu hadir sepenuhnya di saat aku paling <em>membutuhkannya</em></p></div>
+  </div>
+</section>
+
+<section class="closing-section">
+  <p class="closing-quote">Tidak semua cerita punya akhir yang sempurna.<br>Tapi bukan berarti cerita itu tidak indah.</p>
+  <div class="closing-big">Selamat<em>Jalan</em></div>
+  <p class="closing-name">Mutiara Nava Artika</p>
+  <div class="heart">🤍</div>
+  <button class="farewell-btn" onclick="openBook()">
+    <span class="farewell-btn-t">✦ &nbsp; satu hal terakhir untukmu &nbsp; ✦</span>
+    <span class="farewell-btn-s">tekan untuk membuka</span>
+  </button>
+</section>
+
+<!-- AUDIO autoplay -->
+<audio id="bg-music" loop><source src="bohongihati.mp3" type="audio/mpeg"></audio>
+<div id="music-ctrl" onclick="toggleMusic()">
+  <span id="music-icon">♪</span>
+  <span id="music-label">Bohongi Hati — Mahalini</span>
 </div>
 
-<div class="container hidden" id="step2">
-    <h1>Untuk Ara</h1>
-    <p id="confessionText"></p>
-    <button onclick="nextStep()">Selanjutnya</button>
+<!-- BOOK PAGE -->
+<div id="book-page">
+  <div id="book-back" onclick="closeBook()">← kembali</div>
+  <div id="book-hint" class="book-hint">geser atau klik untuk membuka →</div>
+
+  <div id="book-scene">
+    <!-- CLOSED BOOK (initial state) -->
+    <div id="book-closed">
+      <div class="book-cover-wrap">
+        <div class="book-cover-front">
+          <div class="book-cover-spine"></div>
+          <div class="book-cover-content">
+            <p class="book-cover-sub">untuk</p>
+            <p class="book-cover-name">Mutiara</p>
+            <p class="book-cover-sub2">Nava Artika</p>
+            <div class="book-cover-line"></div>
+            <p class="book-cover-note">kenangan yang tak terlupakan</p>
+          </div>
+        </div>
+        <div class="book-cover-back"></div>
+        <div class="book-cover-side"></div>
+        <div class="book-pages-side"></div>
+      </div>
+    </div>
+
+    <!-- OPEN BOOK spreads -->
+    <div id="book-open" style="display:none">
+      <!-- SPREAD 1: foto 1 & 2 -->
+      <div class="spread" id="spread-1">
+        <div class="page page-left">
+          <div class="page-inner">
+            <img src="mutiara1.jpg" alt="Mutiara" class="page-photo">
+            <p class="page-caption">01</p>
+          </div>
+        </div>
+        <div class="book-spine-open"></div>
+        <div class="page page-right" id="page-flip-1">
+          <div class="page-inner">
+            <img src="mutiara2.jpg" alt="Mutiara" class="page-photo">
+            <p class="page-caption">02</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 2: foto 3 & 4 (hidden initially) -->
+      <div class="spread" id="spread-2" style="display:none">
+        <div class="page page-left">
+          <div class="page-inner">
+            <img src="mutiara3.jpg" alt="Mutiara" class="page-photo">
+            <p class="page-caption">03</p>
+          </div>
+        </div>
+        <div class="book-spine-open"></div>
+        <div class="page page-right" id="page-flip-2">
+          <div class="page-inner">
+            <img src="mutiara4.jpg" alt="Mutiara" class="page-photo">
+            <p class="page-caption">04</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 3: closing page -->
+      <div class="spread" id="spread-3" style="display:none">
+        <div class="page page-left">
+          <div class="page-inner page-text-inner">
+            <p class="page-text-big">Terima</p>
+            <p class="page-text-big italic">kasih,</p>
+            <p class="page-text-small">sudah pernah ada<br>dalam hidupku</p>
+          </div>
+        </div>
+        <div class="book-spine-open"></div>
+        <div class="page page-right">
+          <div class="page-inner page-text-inner">
+            <p class="page-text-thanks">🤍</p>
+            <p class="page-text-name">Mutiara<br><em>Nava Artika</em></p>
+            <p class="page-text-final">Kamu akan selalu<br>kuingat</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="book-next-btn" onclick="nextPage()" style="display:none">
+      <span>›</span>
+    </button>
+  </div>
 </div>
-
-<div class="container hidden" id="step3">
-    <h1>Apa kamu mau balikan?</h1>
-    <button class="secondary" onclick="accept()">Mau</button>
-    <button class="secondary" onclick="reject()">Engga</button>
-</div>
-
-<div class="container hidden" id="result"></div>
-
-<audio id="song" loop preload="auto">
-    <source src="reff.mp3" type="audio/mp3">
-</audio>
 
 <script>
+// CURSOR
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-ring');
+document.addEventListener('mousemove',e=>{
+  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+  curR.style.left=e.clientX+'px';curR.style.top=e.clientY+'px';
+});
 
-// animasi partikel
-setInterval(()=>{
-    let particle = document.createElement("div");
-    particle.classList.add("particle");
-    particle.style.left = Math.random()*100+"vw";
-    document.body.appendChild(particle);
-    setTimeout(()=>{particle.remove();},10000);
-},400);
-
-function checkName(){
-    let name = document.getElementById("nameInput").value.trim().toLowerCase();
-
-    if(name === "ara"){
-        document.getElementById("step1").classList.add("hidden");
-        document.getElementById("step2").classList.remove("hidden");
-
-        // 🔥 PLAY MUSIK DI SINI
-        let song = document.getElementById("song");
-        song.currentTime = 0;
-        song.play().catch(() => {
-            console.log("Autoplay diblokir");
-        });
-
-        typeWriter();
-    }else{
-        document.getElementById("error").innerHTML = "Maaf, akses hanya untuk orang yang tepat.";
-    }
+// RAIN DROPS
+const par=document.getElementById('particles');
+for(let i=0;i<22;i++){
+  const d=document.createElement('div');d.className='drop';
+  d.style.left=Math.random()*100+'vw';
+  d.style.height=(30+Math.random()*60)+'px';
+  d.style.animationDuration=(6+Math.random()*10)+'s';
+  d.style.animationDelay=(Math.random()*12)+'s';
+  par.appendChild(d);
 }
 
-let text = `Aku tidak datang untuk memaksa keadaan kembali seperti dulu.
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('on'),i*150);});
+},{threshold:.1});
+document.querySelectorAll('.moment').forEach(el=>obs.observe(el));
 
-Aku hanya ingin jujur bahwa perasaan itu belum benar-benar pergi.
+// SPARKLES
+document.addEventListener('click',e=>{
+  if(e.target.closest('#book-page')||e.target.closest('#music-ctrl'))return;
+  for(let i=0;i<4;i++){
+    const s=document.createElement('div');s.className='sparkle';
+    s.textContent=['·','✦','✧','⋆'][i];
+    s.style.left=(e.clientX+(Math.random()-.5)*44)+'px';
+    s.style.top=(e.clientY+(Math.random()-.5)*44)+'px';
+    s.style.animationDelay=(Math.random()*.3)+'s';
+    document.body.appendChild(s);setTimeout(()=>s.remove(),2600);
+  }
+});
 
-Waktu mungkin berjalan,
-dan keadaan mungkin berubah,
-tapi ada bagian kecil dalam diriku
-yang masih menyimpan semuanya dengan rapi.
+// ===== MUSIC =====
+const music=document.getElementById('bg-music');
+let musicOn=true;
 
-Bukan untuk mengulang kesalahan,
-bukan untuk memaksa cerita,
-tapi untuk memperbaiki apa yang dulu belum sempat diperbaiki.
-
-Aku belajar diam.
-Belajar menahan diri.
-Belajar memahami dari jauh tanpa harus selalu terlihat.
-
-Tidak semua perjuangan harus diumumkan.
-Tidak semua rasa harus dipamerkan.
-Kadang cukup disimpan,
-dan diperjuangkan dengan cara yang lebih dewasa.
-
-Aku masih memperhatikan.
-Masih peduli.
-Masih mendoakan dalam diam.
-
-Bukan karena tidak bisa melangkah,
-tapi karena aku tahu apa yang pernah kita punya
-bukan sesuatu yang mudah tergantikan.
-
-Jika hari ini aku masih berdiri di sini,
-itu bukan karena terjebak masa lalu,
-melainkan karena aku masih percaya
-bahwa sesuatu yang baik
-layak untuk diperjuangkan dengan sabar.
-
-Dan jika suatu hari kamu menoleh,
-aku ingin kamu tahu,
-aku tidak pernah benar-benar pergi.`;
-
-let i = 0;
-function typeWriter(){
-    if(i < text.length){
-        document.getElementById("confessionText").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 35);
-    }
+function startMusic(){
+  music.volume=0;
+  music.play().catch(()=>{
+    // autoplay blocked, try on first interaction
+    document.addEventListener('click',()=>{
+      music.play().catch(()=>{});
+      fadeVol(music,0,.72,2000);
+    },{once:true});
+    return;
+  });
+  fadeVol(music,0,.72,2500);
 }
 
-function nextStep(){
-    document.getElementById("step2").classList.add("hidden");
-    document.getElementById("step3").classList.remove("hidden");
-
-    let song =
-
-    song.src = "reff.mp3";   // set ulang source
-    song.load();             // paksa load ulang
-    song.currentTime = 0;
-
-    let playPromise = song.play();
-
-    if (playPromise !== undefined) {
-        playPromise.then(_ => {
-            console.log("Lagu berhasil diputar");
-        }).catch(error => {
-            console.log("Autoplay diblokir, klik layar dulu");
-        });
-    }
+function toggleMusic(){
+  const icon=document.getElementById('music-icon');
+  if(musicOn){fadeVol(music,music.volume,0,400,()=>music.pause());icon.textContent='♩';icon.style.animationPlayState='paused';}
+  else{music.play();fadeVol(music,0,.72,400);icon.textContent='♪';icon.style.animationPlayState='running';}
+  musicOn=!musicOn;
 }
 
-function accept(){
-
-    document.getElementById("step3").classList.add("hidden");
-    let result = document.getElementById("result");
-    result.classList.remove("hidden");
-
-    result.innerHTML = `
-    <h1>Terima Kasih</h1>
-    <p>
-    Terima kasih karena sudah memilih untuk kembali.
-
-    Aku tidak melihat ini sebagai pengulangan,
-    tapi sebagai kesempatan kedua
-    untuk melakukan semuanya dengan cara yang lebih dewasa.
-
-    Aku tidak menjanjikan hubungan tanpa masalah,
-    tapi aku berjanji akan hadir dengan cara yang lebih tenang,
-    lebih sabar,
-    dan lebih menghargai setiap hal kecil yang dulu mungkin terlewat.
-
-    Aku belajar banyak dari jarak.
-    Belajar bahwa kebersamaan bukan hanya soal dekat,
-    tapi tentang bagaimana menjaga.
-
-    Jika kita berjalan lagi dari awal,
-    aku ingin berjalan tanpa ego yang sama,
-    tanpa kesalahan yang sama,
-    dan tanpa luka yang sama.
-
-    Terima kasih karena masih percaya.
-    Kali ini, aku tidak ingin hanya memiliki,
-    tapi juga menjaga dengan sungguh-sungguh.
-    </p>
-    `;
+function fadeVol(el,from,to,dur,cb){
+  const steps=30,iv=dur/steps,diff=(to-from)/steps;let v=from,n=0;
+  const t=setInterval(()=>{v+=diff;n++;el.volume=Math.max(0,Math.min(1,v));if(n>=steps){clearInterval(t);if(cb)cb();}},iv);
 }
 
-function reject(){
+// Start music on page load
+window.addEventListener('load',()=>startMusic());
 
-    document.getElementById("step3").classList.add("hidden");
-    let result = document.getElementById("result");
-    result.classList.remove("hidden");
+// ===== BOOK =====
+const bookPage=document.getElementById('book-page');
+let bookStep=0; // 0=closed, 1=spread1, 2=spread2, 3=spread3(closing)
 
-    result.innerHTML = `
-    <h1>Aku Mengerti</h1>
-    <p>
-    Aku mengerti keputusanmu.
-
-    Tidak semua perasaan harus kembali menjadi cerita yang sama.
-    Kadang yang terbaik adalah menerima
-    bahwa tidak semua hal indah ditakdirkan untuk diulang.
-
-    Maaf jika selama ini kehadiranku terasa mengganggu,
-    atau jika diamku pernah membuatmu tidak nyaman.
-
-    Aku tidak menyesal pernah memperjuangkan,
-    karena bagiku, apa yang kita punya dulu
-    adalah sesuatu yang tulus.
-
-    Terima kasih sudah pernah menjadi bagian
-    dari fase hidup yang berarti.
-
-    Aku akan melangkah dengan tenang,
-    tanpa menyimpan dendam,
-    tanpa menyimpan kecewa.
-
-    Semoga kamu bahagia,
-    dengan atau tanpa aku di dalam ceritamu.
-    </p>
-    `;
+function openBook(){
+  bookPage.classList.add('show');
+  setTimeout(()=>bookPage.classList.add('vis'),20);
+  bookStep=0;
 }
 
+function closeBook(){
+  bookPage.classList.remove('vis');
+  setTimeout(()=>{
+    bookPage.classList.remove('show');
+    // reset
+    bookStep=0;
+    document.getElementById('book-closed').style.display='flex';
+    document.getElementById('book-open').style.display='none';
+    document.getElementById('book-next-btn').style.display='none';
+    document.getElementById('book-hint').style.opacity='1';
+    ['spread-1','spread-2','spread-3'].forEach((id,i)=>{
+      const el=document.getElementById(id);
+      if(el) el.style.display= i===0?'flex':'none';
+    });
+    const pf1=document.getElementById('page-flip-1');
+    const pf2=document.getElementById('page-flip-2');
+    if(pf1)pf1.classList.remove('flipping');
+    if(pf2)pf2.classList.remove('flipping');
+  },900);
+}
+
+function nextPage(){
+  bookStep++;
+  const hint=document.getElementById('book-hint');
+
+  if(bookStep===1){
+    // Closed → Open spread 1
+    document.getElementById('book-closed').style.display='none';
+    document.getElementById('book-open').style.display='block';
+    document.getElementById('spread-1').style.display='flex';
+    document.getElementById('book-next-btn').style.display='flex';
+    hint.style.opacity='0';
+
+  } else if(bookStep===2){
+    // Spread 1 → flip right page → spread 2
+    const pf=document.getElementById('page-flip-1');
+    pf.classList.add('flipping');
+    setTimeout(()=>{
+      document.getElementById('spread-1').style.display='none';
+      document.getElementById('spread-2').style.display='flex';
+      if(pf)pf.classList.remove('flipping');
+    },800);
+
+  } else if(bookStep===3){
+    // Spread 2 → flip → closing spread
+    const pf=document.getElementById('page-flip-2');
+    pf.classList.add('flipping');
+    setTimeout(()=>{
+      document.getElementById('spread-2').style.display='none';
+      document.getElementById('spread-3').style.display='flex';
+      if(pf)pf.classList.remove('flipping');
+      document.getElementById('book-next-btn').style.display='none';
+      hint.textContent='🤍';
+      hint.style.opacity='1';
+    },800);
+  }
+}
+
+// click/swipe on book scene also triggers next
+document.getElementById('book-page').addEventListener('click',e=>{
+  if(e.target.closest('#book-back')||e.target.closest('#music-ctrl')||e.target.closest('#book-next-btn'))return;
+  if(bookStep===0) nextPage();
+  else if(bookStep<3) nextPage();
+});
+
+// swipe support
+let touchStartX=0;
+document.getElementById('book-page').addEventListener('touchstart',e=>touchStartX=e.touches[0].clientX,{passive:true});
+document.getElementById('book-page').addEventListener('touchend',e=>{
+  const dx=touchStartX-e.changedTouches[0].clientX;
+  if(Math.abs(dx)>40&&bookStep<3)nextPage();
+},{passive:true});
 </script>
-
 </body>
 </html>
